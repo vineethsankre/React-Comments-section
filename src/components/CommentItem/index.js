@@ -6,7 +6,8 @@ const CommentItem = props => {
   const {id, name, comment, isLiked, initialClassName, date} = commentDetails
   const initial = name ? name[0].toUpperCase() : ''
   const postedTime = formatDistanceToNow(date)
-  const likeImageUrl = isLiked
+  const likeTextClassName = isLiked ? 'button active': 'button'
+  const likeImageUrl = isLiked 
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
 
@@ -35,9 +36,8 @@ const CommentItem = props => {
             src={likeImageUrl}
             className="like-image"
             alt="like"
-            
           />
-          <button type="button" onClick={onClickLike}>Like</button>
+          <button type="button" onClick={onClickLike} className={likeTextClassName}>Like</button>
         </div>
         <button className="button" type="button" data-testid="delete">
           <img
