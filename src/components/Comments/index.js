@@ -18,6 +18,33 @@ class Comments extends Component {
     commentsList: [],
   }
 
+  onAddComment = event => {
+    event.preventDefault()
+    const {userNameInput, commentInput} = this.state
+    const initialBackgroundColorClassName = `initial-container ${
+      initialContainerBackgroundClassNames[
+        Math.ceil(
+          Math.random() * initialContainerBackgroundClassNames.length - 1,
+        )
+      ]
+    }`
+    const newComment = {
+      id: v4(),
+      name: userNameInput,
+      comment: commentInput,
+      date: new Date(),
+      isLiked: false,
+      initialClassName: initialBackgroundColorClassName,
+    }
+
+    this.setState(prevState => ({
+      commentsList: [...prevState.commentsList, newComment],
+      userNameInput: '',
+      commentInput: '',
+    }))
+
+  }
+
   onChangeNameInput = event => {
     this.setState({userNameInput: event.target.value})
   }
@@ -33,7 +60,7 @@ class Comments extends Component {
         <div className="comments-container">
           <h1 className="title">Comments</h1>
           <div className="comments-inputs">
-            <form className="form">
+            <form className="form" onSubmit={this.onAddComment}>
               <p className="description">
                 Say something about 4.0 Technologies
               </p>
