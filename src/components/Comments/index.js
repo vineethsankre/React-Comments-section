@@ -18,8 +18,16 @@ class Comments extends Component {
     commentsList: [],
   }
 
+  onChangeNameInput = event => {
+    this.setState({userNameInput: event.target.value})
+  }
+
+  onChangeCommentInput = event => {
+    this.setState({commentInput: event.target.value})
+  }
+
   render() {
-    const {userNameInput, commentInput} = this.state
+    const {userNameInput, commentInput, commentsList} = this.state
     return (
       <div className="app-container">
         <div className="comments-container">
@@ -34,12 +42,14 @@ class Comments extends Component {
                 className="name-box"
                 placeholder="Your Name"
                 value={userNameInput}
+                onChange={this.onChangeNameInput}
               />
               <textarea
                 className="comment-box"
                 value={commentInput}
                 rows="6"
                 placeholder="Your Comment"
+                onChange={this.onChangeCommentInput}
               />
               <button type="submit" className="addcomment-btn">
                 Add Comment
@@ -53,7 +63,7 @@ class Comments extends Component {
           </div>
           <hr className="line" />
           <p className="comments-text">
-            <span className="comments-count">0</span> Comments
+            <span className="comments-count">{commentsList.length}</span> Comments
           </p>
         </div>
       </div>
