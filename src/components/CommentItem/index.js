@@ -6,6 +6,14 @@ const CommentItem = props => {
   const {id, name, comment, isLiked, initialClassName, date} = commentDetails
   const initial = name ? name[0].toUpperCase() : ''
   const postedTime = formatDistanceToNow(date)
+  const likeImageUrl = isLiked
+    ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
+    : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
+
+  const onClickLike = () => {
+    const {toggleisLiked} = props
+    toggleisLiked(id)
+  }
 
   return (
     <li className="comment-item">
@@ -23,18 +31,23 @@ const CommentItem = props => {
       </div>
       <div className="buttons-container">
         <div className="like-container">
-          <img src="https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png" className="like-image" alt="like"/>
-          <button type="button">Like</button>
+          <img
+            src={likeImageUrl}
+            className="like-image"
+            alt="like"
+            
+          />
+          <button type="button" onClick={onClickLike}>Like</button>
         </div>
-        <button
-          className="button"
-          type="button" 
-          data-testid="delete"
-        >
-          <img className="delete" alt="delete" src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"/>
+        <button className="button" type="button" data-testid="delete">
+          <img
+            className="delete"
+            alt="delete"
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
+          />
         </button>
       </div>
-      <hr className="comment-line"/>
+      <hr className="comment-line" />
     </li>
   )
 }

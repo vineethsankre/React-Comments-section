@@ -19,13 +19,21 @@ class Comments extends Component {
     commentsList: [],
   }
 
+  toggleisLiked = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(eachComment => {
+        if (id === eachComment.id){
+          return {...eachComment, isLiked: !eachComment.isLiked}
+        }
+        return eachComment
+      }),
+    }))
+  }
+
   renderCommentsList = () => {
     const {commentsList} = this.state
     return commentsList.map(eachComment => (
-      <CommentItem
-        key={eachComment.id}
-        commentDetails={eachComment}
-      />
+      <CommentItem key={eachComment.id} commentDetails={eachComment} toggleisLiked={this.toggleisLiked}/>
     ))
   }
 
