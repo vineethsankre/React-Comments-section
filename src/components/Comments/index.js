@@ -1,0 +1,64 @@
+import {Component} from 'react'
+import {v4} from 'uuid'
+import './index.css'
+
+const initialContainerBackgroundClassNames = [
+  'amber',
+  'blue',
+  'orange',
+  'emerald',
+  'teal',
+  'red',
+  'light-blue',
+]
+class Comments extends Component {
+  state = {
+    userNameInput: '',
+    commentInput: '',
+    commentsList: [],
+  }
+
+  render() {
+    const {userNameInput, commentInput} = this.state
+    return (
+      <div className="app-container">
+        <div className="comments-container">
+          <h1 className="title">Comments</h1>
+          <div className="comments-inputs">
+            <form className="form">
+              <p className="description">
+                Say something about 4.0 Technologies
+              </p>
+              <input
+                type="text"
+                className="name-box"
+                placeholder="Your Name"
+                value={userNameInput}
+              />
+              <textarea
+                className="comment-box"
+                value={commentInput}
+                rows="6"
+                placeholder="Your Comment"
+              />
+              <button type="submit" className="addcomment-btn">
+                Add Comment
+              </button>
+            </form>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+              alt="comments"
+              className="image"
+            />
+          </div>
+          <hr className="line" />
+          <p className="comments-text">
+            <span className="comments-count">0</span> Comments
+          </p>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Comments
