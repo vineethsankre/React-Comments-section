@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {v4} from 'uuid'
+import CommentItem from '../CommentItem'
 import './index.css'
 
 const initialContainerBackgroundClassNames = [
@@ -16,6 +17,16 @@ class Comments extends Component {
     userNameInput: '',
     commentInput: '',
     commentsList: [],
+  }
+
+  renderCommentsList = () => {
+    const {commentsList} = this.state
+    return commentsList.map(eachComment => (
+      <CommentItem
+        key={eachComment.id}
+        commentDetails={eachComment}
+      />
+    ))
   }
 
   onAddComment = event => {
@@ -42,7 +53,6 @@ class Comments extends Component {
       userNameInput: '',
       commentInput: '',
     }))
-
   }
 
   onChangeNameInput = event => {
@@ -90,8 +100,10 @@ class Comments extends Component {
           </div>
           <hr className="line" />
           <p className="comments-text">
-            <span className="comments-count">{commentsList.length}</span> Comments
+            <span className="comments-count">{commentsList.length}</span>{' '}
+            Comments
           </p>
+          <ul className="comments-list">{this.renderCommentsList()}</ul>
         </div>
       </div>
     )
