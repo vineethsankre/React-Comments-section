@@ -22,7 +22,7 @@ class Comments extends Component {
   toggleisLiked = id => {
     this.setState(prevState => ({
       commentsList: prevState.commentsList.map(eachComment => {
-        if (id === eachComment.id){
+        if (id === eachComment.id) {
           return {...eachComment, isLiked: !eachComment.isLiked}
         }
         return eachComment
@@ -30,10 +30,22 @@ class Comments extends Component {
     }))
   }
 
+  deleteComment = commentId => {
+    const {commentsList} = this.state
+    this.setState({
+      commentsList: commentsList.filter(comment => comment.id !== commentId)
+    })
+  }
+
   renderCommentsList = () => {
     const {commentsList} = this.state
     return commentsList.map(eachComment => (
-      <CommentItem key={eachComment.id} commentDetails={eachComment} toggleisLiked={this.toggleisLiked}/>
+      <CommentItem
+        key={eachComment.id}
+        commentDetails={eachComment}
+        toggleisLiked={this.toggleisLiked}
+        deleteComment={this.deleteComment}
+      />
     ))
   }
 

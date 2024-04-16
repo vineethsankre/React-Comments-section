@@ -16,6 +16,11 @@ const CommentItem = props => {
     toggleisLiked(id)
   }
 
+  const onDeleteComment = () => {
+    const {deleteComment} = props
+    deleteComment(id)
+  }
+
   return (
     <li className="comment-item">
       <div className="comment-container">
@@ -39,7 +44,7 @@ const CommentItem = props => {
           />
           <button type="button" onClick={onClickLike} className={likeTextClassName}>Like</button>
         </div>
-        <button className="button" type="button" data-testid="delete">
+        <button className="button" onClick={onDeleteComment} type="button" data-testid="delete">
           <img
             className="delete"
             alt="delete"
