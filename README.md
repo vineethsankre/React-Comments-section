@@ -138,9 +138,3 @@ console.log(formatDistanceToNow(new Date())) // less than a minute
 
 </details>
 
-<details>
-<summary>Font-families</summary>
-
-- Roboto
-
-</details>
