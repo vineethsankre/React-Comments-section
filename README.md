@@ -74,23 +74,6 @@ console.log(formatDistanceToNow(new Date())) // less than a minute
 
 </details>
 
-### Important Note
-
-<details>
-<summary>Click to view</summary>
-
-<br/>
-
-**The following instructions are required for the tests to pass**
-
-- HTML input element for name should have the placeholder as **Your Name**
-- HTML textarea element for comment should have the placeholder as **Your Comment**
-- The **Like** image for each comment should have the alt as **like**
-- The **Delete** button for each comment should have the data-testid as **delete**
-- To display how much time ago the comment was posted, we will use `formatDistanceToNow` function from **date-fns** package
-
-</details>
-
 ### Resources
 
 <details>
